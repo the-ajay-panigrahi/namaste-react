@@ -4,16 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Namaste React</title>
+
+    <style>
+      #heading {
+        font-family: sans-serif;
+      }
+    </style>
   </head>
   <body>
-    <div id="root">
-      <!-- <h1>Hello World!</h1> -->
-    </div>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
     <script>
-      const heading = document.createElement("h1");
-      heading.innerHTML = "Hello World from JavaScript!";
+      // const element = document.createElement("h1");
+      // element.innerHTML = "Namaste React Using JS!";
+
+      // const root = document.getElementById("root");
+      // root.appendChild(element);
+
+      const element = React.createElement(
+        "h1",
+        {
+          title: "Jai Shree Ram",
+          id: "heading",
+        },
+        "Namaste!!"
+      );
+
       const root = document.getElementById("root");
-      root.appendChild(heading);
+
+      const myRoot = ReactDOM.createRoot(root);
+
+      myRoot.render(element);
     </script>
   </body>
 </html>
