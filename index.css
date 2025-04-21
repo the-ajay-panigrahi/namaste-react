@@ -1,0 +1,20 @@
+#heading {
+    font-family: sans-serif;
+    background-color: steelblue;
+    padding: 5px;
+    color: #fff;
+    border-radius: 7px;
+    width: fit-content;
+    margin: 0px auto;
+    cursor: pointer;
+}
+
+.styling {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    padding: 20px;
+    border-radius: 50px;
+    background-color: yellow;
+    width: fit-content;
+    margin: 10px auto;
+}

@@ -1,48 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Namaste React</title>
 
-    <style>
-      #heading {
-        font-family: sans-serif;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Namaste React</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
 
-    <script
-      crossorigin
-      src="https://unpkg.com/react@18/umd/react.development.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    ></script>
-    <script>
-      // const element = document.createElement("h1");
-      // element.innerHTML = "Namaste React Using JS!";
+<body>
+  <div>Top</div>
+  <div id="root">
+    <h1>I am Ajay</h1>
+    <h1>I am Ajay</h1>
+    <h1>I am Ajay</h1>
+    <h1>I am Ajay</h1>
+  </div>
+  <div>Bottom</div>
 
-      // const root = document.getElementById("root");
-      // root.appendChild(element);
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="./App.js"></script>             
+</body>
 
-      const element = React.createElement(
-        "h1",
-        {
-          title: "Jai Shree Ram",
-          id: "heading",
-        },
-        "Namaste!!"
-      );
-
-      const root = document.getElementById("root");
-
-      const myRoot = ReactDOM.createRoot(root);
-
-      myRoot.render(element);
-    </script>
-  </body>
 </html>
