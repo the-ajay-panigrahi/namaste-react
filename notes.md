@@ -251,3 +251,60 @@ In other words, if your project uses package A, and package A depends on package
 - Think of **GitHub** as **Google Drive** — you upload your document **online** to **store, share, and collaborate** with others.
 
 So, Git helps you manage your code, and GitHub helps you store and share it with others.
+
+### Q9: What is Parcel?
+
+**A:**  Parcel is a web application bundler. It automatically processes and optimizes your files (HTML, CSS, JavaScript, images, etc.) to create fast, efficient, and production-ready builds. It handles many tasks in the background to improve developer experience and app performance.
+
+#### What Parcel does in the background:
+
+- **Development Build**  
+  Quickly bundles your code for local development with minimal configuration.
+
+- **Local Server**  
+  Starts a local development server so you can run and preview your app in the browser.
+
+- **HMR (Hot Module Replacement)**  
+  Updates only the changed parts of the app instantly without refreshing the whole page.
+
+- **File Watching Algorithm (written in C++)**  
+  Efficiently detects file changes to trigger fast rebuilds and hot updates.
+
+- **Caching**  
+  Saves processed files to avoid reprocessing unchanged code, which speeds up future builds.
+
+- **Image Optimization**  
+  Automatically compresses and optimizes image files for better performance.
+
+- **Minification**  
+  Removes unnecessary characters (like spaces, comments) from code to reduce file size.
+
+- **Bundling**  
+  Combines multiple files (e.g., modules) into fewer files to reduce the number of network requests.
+
+- **Compressing**  
+  Further reduces the size of files using compression algorithms like gzip or Brotli.
+
+- **Consistent Hashing**  
+  Generates unique filenames based on content (e.g., `main.ab12.js`) so browsers cache only updated files.
+
+- **Code Splitting**  
+  Splits the code into smaller chunks that are loaded only when needed (e.g., on route change), reducing initial load time.
+
+- **Differential Bundling**  
+  Creates different bundles for modern browsers (ES6+) and older ones (ES5), ensuring better performance and wider compatibility.
+
+- **Diagnostics**  
+  Provides detailed error messages and warnings to help identify and fix issues easily.
+
+- **Error Handling**  
+  Displays clear and helpful errors during development and builds.
+
+- **HTTPS Support**  
+  Can run the local development server over HTTPS for secure connections.
+
+- **Tree Shaking**  
+  Removes unused code from the final bundle, reducing the overall size.
+
+- **Separate Dev and Prod Bundles**  
+  Creates fast and flexible builds for development and highly optimized builds for production.
