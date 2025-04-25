@@ -147,7 +147,7 @@ React has many benefits that make it popular for building user interfaces:
 **In short:**  
 React makes UI development **faster**, **cleaner**, and **more reusable**, with strong community support and great tools.
 
-## Episode-02 | Igniting our App
+## Episode - 02 | Igniting our App
 
 ### Q1: What is npm?
 
@@ -308,3 +308,58 @@ So, Git helps you manage your code, and GitHub helps you store and share it with
 
 - **Separate Dev and Prod Bundles**  
   Creates fast and flexible builds for development and highly optimized builds for production.
+
+## Episode - 03 | Laying the foundation
+
+
+### Q1: What is JSX?
+
+**A:**  JSX is not HTML in JS. JSX is an HTML like Syntax. JSX is not part of react. JSX is a convention where we merge html & Js together!
+
+### Q2: Does JS Engine understand JSX?
+**A:**  No, the JS engine does not understand JSX. That’s why JSX is **transpiled** (converted) to **React.createElement** before it reaches the JS engine. This is done by a package in Parcel called Babel.
+
+``` JS
+// Before JSX we used to write something like this
+import React from "react";
+import ReactDOM from "react-dom/client"
+
+// React.createElement => ReactElement(JS Object) => HTMLElement(by render method)
+const heading =    React.createElement("h1", { id: "heading" }, "I am an h1 tag.")
+
+// We will be using JSX to tackle the above ugly syntax!
+
+// JSX => React.createElement => ReactElement(JS Object) => HTMLElement(by render method)
+const jsxHeading = <h1 id="heading>I am an h1 tag.</h1>
+// This conversion/transpilation of JSX to React.createElement is done by Babel(a package(it is a transitive dependency in parcel))
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+
+// root.render(heading)
+root.render(jsxHeading)
+```
+### Q3: What is a component in React?
+**A:** A component is a reusable piece of UI in React. There are two types of components:
+
+1. **Class-based Component** – The old way of writing components using ES6 classes.
+2. **Functional Component** – The modern and preferred way using functions.
+
+### Q4: What is a Functional Component in React?
+**A:** A functional component is a JavaScript function that returns JSX (a React element). It is the modern and preferred way to build components in React.
+
+### Q5: What is Component Composition?
+**A:** Component composition means using one component inside another. In simple words, it's about nesting components to build complex UIs from smaller, reusable pieces.
+
+### Q6: What is Cross-Site Scripting (XSS)? Does JSX help prevent it?
+
+**A:** Cross-Site Scripting (XSS) is a security vulnerability where attackers inject malicious scripts into a website. These scripts run in the user's browser and can steal sensitive data or perform harmful actions.
+
+✅ **How JSX helps prevent XSS:**
+
+JSX automatically **escapes values** inside `{}` before rendering them. This means any user-provided data is treated as plain text, not executable code, helping prevent XSS attacks.
+
+**Example:**
+```js
+const data = "<script>alert('XSS')</script>";
+const element = <div>{data}</div>; // Renders as plain text, script doesn't run
+
