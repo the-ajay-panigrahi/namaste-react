@@ -362,4 +362,59 @@ JSX automatically **escapes values** inside `{}` before rendering them. This mea
 ```js
 const data = "<script>alert('XSS')</script>";
 const element = <div>{data}</div>; // Renders as plain text, script doesn't run
+```
 
+
+## Episode - 04 | Talk is Cheap, Show Me the Code
+
+### Q1: What is Props in React?
+
+**A:** Props is a short form for **properties**.  
+Props help us **pass data dynamically** to components.  
+In simple terms, props are like **arguments** to a function (component).  
+When received by the component, it is an **object** that we can **destructure and use**.  
+Overall, whenever you want to **dynamically pass data** to a component, pass it **as props**.
+
+### Q2: What is Config Driven UI?
+
+**A:** Our websites are driven by **data**, and often controlled using **configs**.  
+In simple words, it means **controlling the UI using data or configurations**.  
+It is a **User Interface** that is **built and configured** using a **declaration configuration file or data structure**, rather than hardcoding everything manually.  
+Configs are usually **data coming from an API**, which can **change based on different factors** like **user**, **location**, etc.
+
+👉 In Config Driven UI, the **data decides what the UI will look like**, not the code.
+
+### Q3: What is `?:` (optional chaining)?
+
+**A:** Optional chaining (`?.`) is a feature in JavaScript that **safely accesses nested object properties** without throwing an error if a property is `undefined` or `null`.  
+It helps avoid crashes when you try to read something that may not exist.
+
+For example:
+```javascript
+const user = { name: "John", address: { city: "New York" } };
+console.log(user.address?.city); // New York
+console.log(user.profile?.email); // undefined (no error)
+```
+
+👉 Without optional chaining, you would have to check manually if each property exists.
+
+### Q4: Key in React while looping?
+
+**A:** Keys in React should be **unique**.  
+👉 **Do not use indexes as keys**, because it can create problems.
+
+**Why are unique keys important?**  
+When we loop through components (like with `.map()`), React needs a **way to identify each item**.  
+If keys are not unique, React **cannot correctly identify** which item was added, updated, or removed.  
+As a result, React **may re-render the entire list** instead of updating only the changed item.
+
+But with **unique keys**, React can **optimize** the update by **only re-rendering the changed item**, not the whole list.  
+This improves **performance** and **makes UI faster**.
+
+**In short:**  
+- ✅ Unique ID as key = Best Practice  
+- ⚠️ Index as key = Not recommended (can cause bugs in dynamic lists)  
+- ❌ No key = Very bad practice
+
+**One line memory trick:**  
+👉 "**Unique keys = Efficient re-rendering**"
