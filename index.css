@@ -1,20 +1,160 @@
-#heading {
-    font-family: sans-serif;
-    background-color: steelblue;
-    padding: 5px;
-    color: #fff;
-    border-radius: 7px;
-    width: fit-content;
-    margin: 0px auto;
-    cursor: pointer;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.styling {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #ccccccb1;
+    top: 0;
+    position: sticky;
+    background-color: #fff;
+    z-index: 3;
+}
+
+.header-section .logo img {
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header-section .logo img:hover {
+    transform: scale(1.2);
+}
+
+.header-section .logo {
+    width: 101px;
+}
+
+.header-section .links {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    gap: 35px;
+}
+
+.header-section .links li {
+    list-style-type: none;
+    text-decoration: none;
+    transition: all 0.35s ease;
+}
+
+.header-section .links li:hover {
+    border-bottom: 2px solid red;
+    transform: scale(1.1);
+    cursor: pointer;
+
+    transition: all 0.35s ease;
+}
+
+.header-section .links li a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    letter-spacing: 1px;
+
+}
+
+.header-section .links li a:hover {
+    color: red;
+}
+
+.res-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 50px;
+}
+
+
+.res-card {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    max-width: 350px;
+    overflow: hidden;
+    border-radius: 20px;
+    min-height: 520px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.res-card:hover {
+    transform: scale(1.07);
+    border: 1px solid #00000057;
+}
+
+.res-card .logo {
+    width: 350px;
+    height: 350px;
+}
+
+.res-card .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.name {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.avg-cost {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.avg-cost span:first-child {
+    font-weight: bold;
+}
+
+.avg-cost span:last-child {
+    color: rgba(0, 0, 0, 0.716);
+    font-weight: 700;
+    font-style: italic;
+}
+
+.cuisines {
+    color: rgba(0, 0, 0, 0.716);
+    font-weight: 500;
+}
+
+.locality {
+    color: rgba(0, 0, 0, 0.934);
+    font-weight: 500;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 5px;
+    font-weight: 500;
+    font-style: italic;
+    color: #000000b3;
+    cursor: pointer;
     text-align: center;
-    padding: 20px;
-    border-radius: 50px;
-    background-color: yellow;
-    width: fit-content;
-    margin: 10px auto;
 }
