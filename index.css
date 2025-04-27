@@ -158,3 +158,27 @@ body {
     cursor: pointer;
     text-align: center;
 }
+
+.filter-btn-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px 3px;
+}
+
+.filter-btn {
+    padding: 12px 22px;
+    border: none;
+    background-color: orangered;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: rgb(218, 63, 7);
+    transform: scale(1.05);
+}
