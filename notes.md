@@ -521,3 +521,28 @@ function Example() {
   React still uses the **reconciliation process and diffing algorithm**, but now it is powered by the **Fiber engine**, making React apps much faster and smoother.
 
 
+## Episode - 06 | Exploring the World
+
+
+### Q1: What is Monolith and Microservice Architecture?
+
+**A:** Traditionally, applications were built using **Monolithic Architecture**, where all code (backend, frontend, auth, SMS, etc.) was combined in a single project and stack.  
+Now, the world is moving towards **Microservice Architecture**, where each feature (frontend, backend, auth, etc.) is built as a separate service, possibly in different tech stacks.  
+These services communicate with each other over different ports and are mapped to different routes in the domain. Together, they form a complete application.  
+This approach follows **Separation of Concerns** and **Single Responsibility Principle**.
+
+### Q2: What is useEffect Hook?
+
+**A:** The `useEffect` Hook takes two arguments: a callback function and a dependency array.  
+The callback function runs **after** the component has rendered (not before rendering).  
+It is mainly used for side effects like data fetching, subscriptions, or manually changing the DOM.
+
+### Q3: What is conditional rendering?
+
+**A:**  Conditional rendering means showing different UI elements based on certain conditions.  
+In React, it is done using JavaScript operators like `if`, `ternary ( ? : )`, `&&`, or functions to render components dynamically based on state or props.
+
+### Q4: CORS?
+
+**A:** CORS (Cross-Origin Resource Sharing) is a security feature in browsers that controls how resources are shared between different origins (domains, protocols, or ports).  
+It prevents unauthorized requests from other origins unless the server explicitly allows them by setting proper headers.

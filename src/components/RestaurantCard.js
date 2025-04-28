@@ -23,4 +23,6 @@ const RestaurantCard = ({ resData }) => {
     )
 }
 
+
+
 export default RestaurantCard
