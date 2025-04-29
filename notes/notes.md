@@ -531,6 +531,10 @@ Now, the world is moving towards **Microservice Architecture**, where each featu
 These services communicate with each other over different ports and are mapped to different routes in the domain. Together, they form a complete application.  
 This approach follows **Separation of Concerns** and **Single Responsibility Principle**.
 
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+
 ### Q2: What is useEffect Hook?
 
 **A:** The `useEffect` Hook takes two arguments: a callback function and a dependency array.  
