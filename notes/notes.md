@@ -550,3 +550,86 @@ In React, it is done using JavaScript operators like `if`, `ternary ( ? : )`, `&
 
 **A:** CORS (Cross-Origin Resource Sharing) is a security feature in browsers that controls how resources are shared between different origins (domains, protocols, or ports).  
 It prevents unauthorized requests from other origins unless the server explicitly allows them by setting proper headers.
+
+
+## Episode - 07 | Finding the Path
+
+### Q1: Explain `useEffect()` Hook in detail
+
+**A:**  The `useEffect` hook is a special function provided by React (not just a normal JS utility). It allows you to perform side effects in functional components, such as data fetching, DOM manipulation, subscriptions, etc. It takes two arguments:  
+1. A **callback function** (required) — this contains the code you want to run.  
+2. A **dependency array** (optional) — this controls when the effect should re-run.
+
+There are **three common use cases**:
+
+1. **No dependency array:**  
+   `useEffect` is called **after every render** (both initial and updates).
+
+2. **Empty dependency array (`[]`):**  
+   `useEffect` is called **only once** after the **initial render**, acting like `componentDidMount`.
+
+3. **With dependencies (`[dep1, dep2, ...]`):**  
+   `useEffect` is called **on the initial render**, and **again whenever any of the listed dependencies change**.
+
+> Note: Always ensure the dependencies are correctly listed to avoid bugs or unnecessary re-renders.
+
+### Q2: What is React Router DOM?
+
+**A:** **React Router DOM** is a library that lets you add multiple pages (routes) to a React app **without reloading** the page. It's used for **client-side routing** in Single Page Applications (SPA).
+
+---
+
+### 🔧 `createBrowserRouter` Syntax (React Router v6.4+)
+
+```jsx
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Home from "./Home";
+import About from "./About";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+]);
+
+function App() {
+  return <RouterProvider router={router} />;
+}
+```
+
+### 🧩 Routing Configuration with `createBrowserRouter`
+
+Whenever you need to create routes, you must do **routing configuration**.  
+This routing configuration is done using **React Router DOM’s `createBrowserRouter`**.
+
+By routing configuration, we mean deciding **what should happen at a specific route**.
+
+The `createBrowserRouter` function takes an **array of route objects**, where each object defines a `path` and an associated `element` (the component to render).
+
+However, just creating the configuration isn't enough — you also need to **provide** this configuration to your app using the `RouterProvider` component.  
+This will render the appropriate UI based on the current route.
+
+> 💡 One more cool feature React Router DOM provides is error handling through the `useRouteError()` hook.
+
+### Q3: What are the types of Web Application Routing?
+
+**A:** There are two main types of Web Application Routing:
+
+1. **Client-Side Routing**  
+   - In this approach, the routing is handled by the browser using JavaScript (usually with libraries like React Router).
+   - No additional network calls are made for navigating between pages.
+   - All required pages/components are loaded in the initial request.
+   - It gives a fast, seamless SPA (Single Page Application) experience.
+
+2. **Server-Side Routing**  
+   - In this approach, each page navigation triggers a network request to the server.
+   - The server responds with a fresh HTML page for each route.
+   - This is the traditional approach used in multi-page applications (MPAs).
