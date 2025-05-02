@@ -473,6 +473,7 @@ Whenever a state variable is updated, React automatically re-renders the compone
 It keeps the **data layer** and **UI layer** in sync — when the data changes, the UI updates too.
 
 Example:
+
 ```javascript
 import { useState } from "react";
 
@@ -490,7 +491,7 @@ function Example() {
 
 ### Q3: How does React work behind the scenes?
 
-**A:**  React is fast because it does **efficient DOM manipulations**.
+**A:** React is fast because it does **efficient DOM manipulations**.
 
 - **Virtual DOM**:  
   A copy of the real DOM, stored in memory (RAM) as a lightweight JavaScript object.  
@@ -509,6 +510,7 @@ function Example() {
 - **React Fiber (React 16 and later)**:  
   React introduced a **new engine called Fiber** to do reconciliation in a better way.  
   Fiber allows React to:
+
   - **Pause** work
   - **Abort** work
   - **Prioritize** important updates
@@ -520,9 +522,7 @@ function Example() {
 - **Summary**:  
   React still uses the **reconciliation process and diffing algorithm**, but now it is powered by the **Fiber engine**, making React apps much faster and smoother.
 
-
 ## Episode - 06 | Exploring the World
-
 
 ### Q1: What is Monolith and Microservice Architecture?
 
@@ -543,7 +543,7 @@ It is mainly used for side effects like data fetching, subscriptions, or manuall
 
 ### Q3: What is conditional rendering?
 
-**A:**  Conditional rendering means showing different UI elements based on certain conditions.  
+**A:** Conditional rendering means showing different UI elements based on certain conditions.  
 In React, it is done using JavaScript operators like `if`, `ternary ( ? : )`, `&&`, or functions to render components dynamically based on state or props.
 
 ### Q4: CORS?
@@ -551,13 +551,13 @@ In React, it is done using JavaScript operators like `if`, `ternary ( ? : )`, `&
 **A:** CORS (Cross-Origin Resource Sharing) is a security feature in browsers that controls how resources are shared between different origins (domains, protocols, or ports).  
 It prevents unauthorized requests from other origins unless the server explicitly allows them by setting proper headers.
 
-
 ## Episode - 07 | Finding the Path
 
 ### Q1: Explain `useEffect()` Hook in detail
 
-**A:**  The `useEffect` hook is a special function provided by React (not just a normal JS utility). It allows you to perform side effects in functional components, such as data fetching, DOM manipulation, subscriptions, etc. It takes two arguments:  
-1. A **callback function** (required) — this contains the code you want to run.  
+**A:** The `useEffect` hook is a special function provided by React (not just a normal JS utility). It allows you to perform side effects in functional components, such as data fetching, DOM manipulation, subscriptions, etc. It takes two arguments:
+
+1. A **callback function** (required) — this contains the code you want to run.
 2. A **dependency array** (optional) — this controls when the effect should re-run.
 
 There are **three common use cases**:
@@ -582,10 +582,7 @@ There are **three common use cases**:
 ### 🔧 `createBrowserRouter` Syntax (React Router v6.4+)
 
 ```jsx
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 
@@ -623,13 +620,19 @@ This will render the appropriate UI based on the current route.
 
 **A:** There are two main types of Web Application Routing:
 
-1. **Client-Side Routing**  
+1. **Client-Side Routing**
+
    - In this approach, the routing is handled by the browser using JavaScript (usually with libraries like React Router).
    - No additional network calls are made for navigating between pages.
    - All required pages/components are loaded in the initial request.
    - It gives a fast, seamless SPA (Single Page Application) experience.
 
-2. **Server-Side Routing**  
+2. **Server-Side Routing**
    - In this approach, each page navigation triggers a network request to the server.
    - The server responds with a fresh HTML page for each route.
    - This is the traditional approach used in multi-page applications (MPAs).
+
+<!-- Pending -->
+
+on scroll more restaurants
+give vegonly option in restaurant menu
