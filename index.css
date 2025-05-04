@@ -360,3 +360,10 @@ body {
     background-color: #fff;
     color: #000;
 }
+
+.about-card {
+    border: 7px solid black;
+    margin: 20px;
+    width: 700px;
+    padding: 10px;
+}

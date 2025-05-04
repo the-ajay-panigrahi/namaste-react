@@ -632,7 +632,148 @@ This will render the appropriate UI based on the current route.
    - The server responds with a fresh HTML page for each route.
    - This is the traditional approach used in multi-page applications (MPAs).
 
-<!-- Pending -->
+## Episode-08 | Let's Get Classy
 
-on scroll more restaurants
+### Q1: What is the use of super keyword in js?
+
+**A:** super keyword is used in classes to call the constructor or access the properties and methods of a parent (superclass)
+
+- _this = this object_
+- _super = the parent_
+
+```javascript
+class Animal {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  move(speed) {
+    console.log(`The ${this.name} moves at a speed of ${speed}mph`);
+  }
+}
+
+class Rabbit extends Animal {
+  constructor(name, age, runSpeed) {
+    super(name, age);
+    this.runSpeed = runSpeed;
+  }
+
+  run() {
+    console.log(`This ${this.name} can run`);
+    super.move(this.runSpeed);
+  }
+}
+
+class Fish extends Animal {
+  constructor(name, age, swimSpeed) {
+    super(name, age);
+    this.swimSpeed = swimSpeed;
+  }
+
+  swim() {
+    console.log(`This ${this.name} can swim`);
+    super.move(this.swimSpeed);
+  }
+}
+
+class Hawk extends Animal {
+  constructor(name, age, flySpeed) {
+    super(name, age);
+    this.flySpeed = flySpeed;
+  }
+
+  fly() {
+    console.log(`This ${this.name} can fly`);
+    super.move(this.flySpeed);
+  }
+}
+
+const rabbit = new Rabbit("rabbit", 1, 25);
+const fish = new Fish("fish", 2, 12);
+const hawk = new Hawk("hawk", 3, 50);
+
+rabbit.run();
+fish.swim();
+hawk.fly();
+```
+
+### Q2: What is class based components in react?
+
+**A:** Class based components uses classes, this class extends React.Component. It has a render method that returns jsx. To access the props passed, we will use constructor here, note dont forget to use super keyword before using this
+
+```javascript
+import React from "react"
+
+class UserClass extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+    render() {
+        const { name, location, contactInfo } = this.props
+        return <div>
+            <h2>Name : {name}</h2>
+            <h3>Location : {location}</h3>
+            <h4>Contact : {contactInfo}</h4>
+        </div>
+    }
+}
+
+export default UserClass
+
+```
+### Q3: What is the lifecycle of a class-based component in React?
+
+**A:** In React class-based components, the lifecycle during the **mounting phase** includes:
+
+- `constructor()`
+- `render()`
+- `componentDidMount()`
+
+React processes this in **two main phases**:
+
+---
+
+#### 🔹 Render Phase
+- Executes: `constructor()` → `render()`
+- React performs **diffing**, **reconciliation**, and **batches virtual DOM**
+- **No real DOM updates** happen here
+
+---
+
+#### 🔸 Commit Phase
+- React updates the **actual DOM**
+- Executes: `componentDidMount()`
+- DOM mutations and side effects happen here
+
+> ✅ React delays real DOM operations to the commit phase to avoid performance issues caused by direct DOM manipulation during rendering.
+
+---
+
+### ✅ Example Code
+
+```jsx
+import React from "react";
+
+class ExampleComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("Constructor called");
+  }
+
+  componentDidMount() {
+    console.log("Component did mount");
+  }
+
+  render() {
+    console.log("Render method called");
+    return <h1>Hello from Lifecycle!</h1>;
+  }
+}
+
+export default ExampleComponent;
+```
+
+<!-- Pending -->
+on scroll more restaurants, 
 give vegonly option in restaurant menu
