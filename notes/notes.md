@@ -774,6 +774,61 @@ class ExampleComponent extends React.Component {
 export default ExampleComponent;
 ```
 
+### Q4: What is the `order of life cycle method calls in Class Based Components`?
+
+**A:** `Constructor` - The constructor method is the first to be called when a component is created. It's where we typically initialize the component's state and bind event handlers.
+
+`Render` - The render method is responsible for rendering the component's UI. It must return a React element (typically JSX) representing the component's structure.
+
+`ComponentDidMount` - This method is called immediately after the component is inserted into the DOM. It's often used for making AJAX requests, setting up subscriptions, or other one-time initializations.
+
+`ComponentDidUpdate` - This method is called after the component has been updated (re-rendered) due to changes in state or props. It's often used for side effects, like updating the DOM in response to state or prop changes.
+
+`ComponentWillUnmount` - This method is called just before the component is removed from the DOM. It's used to clean up resources or perform any necessary cleanup.
+
+For more reference [React-Lifecycle-methods](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+
+
+### Q5: Why can't we have the `callback function` of `useEffect async`?
+A: In React, the `useEffect` hook is designed to handle side effects in functional components. It's a powerful and flexible tool for managing asynchronous operations, such as data fetching, API calls, and more. However, useEffect itself cannot directly accept an async callback function. This is because useEffect expects its callback function to return either nothing (i.e., undefined) or a cleanup function, and it doesn't work well with Promises returned from async functions. There are a few reasons for this:
+
+`Return Value Expectation` - The primary purpose of the useEffect callback function is to handle side effects and perform cleanup. React expects us to either return nothing (i.e., undefined) from the callback or return a cleanup function. An async function returns a Promise, and it doesn't fit well with this expected behavior.
+
+`Execution Order and Timing` - With async functions, we might not have fine-grained control over the execution order of the asynchronous code and the cleanup code. React relies on the returned cleanup function to handle cleanup when the component is unmounted or when the dependencies specified in the useEffect dependency array change. If you return a Promise, React doesn't know when or how to handle cleanup.
+
+To work with async operations within a useEffect, we can use the following pattern:
+
+```javascript
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      // Perform asynchronous operations
+      const result = await someAsyncOperation();
+      // Update the state with the result
+      setState(result);
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }
+  };
+
+  fetchData(); // Call the async function
+
+  return () => {
+    // Cleanup code, if necessary
+    // This function will be called when the component unmounts or when dependencies change
+  };
+}, [/* dependency array */]);
+```
+
+In this pattern, we define an async function within the useEffect callback, perform our asynchronous operations, and then call that function. Additionally, we return a cleanup function from the useEffect to handle any necessary cleanup tasks when the component unmounts or when specified dependencies change.
+
+By using this approach, we can effectively manage asynchronous operations with useEffect while adhering to React's expectations for the callback function's return value.
+
+---
+
+
 <!-- Pending -->
 on scroll more restaurants, 
 give vegonly option in restaurant menu

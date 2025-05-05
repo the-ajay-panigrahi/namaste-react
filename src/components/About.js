@@ -19,8 +19,6 @@ class About extends React.Component {
             <h1>About US</h1>
             {/* <User name={"Ajay(fn)"} location={"Mumbai(fn)"} contactInfo={"Contact Info(fn)"} /> */}
             <UserClass name={"Ajay(class)"} location={"Mumbai(class)"} contactInfo={"Contact Info(class)"} />
-            <UserClass name={"Ram(class)"} location={"Dubai(class)"} contactInfo={"Contact Info(class)"} />
-            <UserClass name={"Vijay(class)"} location={"Dubai(class)"} contactInfo={"Contact Info(class)"} />
         </>)
     }
 }

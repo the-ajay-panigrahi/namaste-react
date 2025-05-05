@@ -1,5 +1,4 @@
 import React from "react"
-import Header from "./Header"
 
 class UserClass extends React.Component {
     constructor(props) {
@@ -7,31 +6,47 @@ class UserClass extends React.Component {
 
         this.state = {
             count: 0,
+            userInfo: {
+                name: "Ram"
+            }
         }
-        console.log(this.props.name + " Child Constructor");
+
+        console.log("Constructor");
 
     }
 
-    componentDidMount() {
-        console.log(this.props.name + " Child Component Did Mount");
+    async componentDidMount() {
+        console.log("Component Did Mount");
+        this.timer = setInterval(() => {
+            console.log("Ram");
+        }, 1000);
+
+        const data = await fetch("https://api.github.com/users/the-ajay-panigrahi")
+        const jsonData = await data.json()
+        console.log(jsonData);
+        this.setState({
+            userInfo: jsonData
+        })
+
+    }
+
+    componentDidUpdate() {
+        console.log("Component Did Update");
+    }
+
+    componentWillUnmount() {
+        console.log("Component Will Unmount");
+        clearInterval(this.timer)
+
     }
 
     render() {
-        const { name, location, contactInfo } = this.props
-        console.log(name + " Child Render");
+        const { name, avatar_url, bio } = this.state.userInfo
         let { count } = this.state
         return <div className="about-card">
-            <h1>Count: {count}</h1>
+            <img src={avatar_url} />
             <h2>Name : {name}</h2>
-            <h3>Location : {location}</h3>
-            <h4>Contact : {contactInfo}</h4>
-            <button onClick={() => {
-                this.setState({
-                    // count: this.state.count + 1
-                    count: count + 1
-                })
-            }}>Count Increase</button>
-            <Header />
+            <h3>Bio : {bio}</h3>
         </div>
     }
 }
