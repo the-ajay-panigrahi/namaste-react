@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard"
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const Body = () => {
@@ -10,20 +11,33 @@ const Body = () => {
     let [searchText, setSearchText] = useState("");
     let [filteredResList, setFilteredResList] = useState([]);
 
+    const onlineStatus = useOnlineStatus()
+
 
     const fetchData = async () => {
-        const data = await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+        const data = await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.77985670251919&lng=83.36289939773746&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
 
         const jsonData = await data.json()
+        
 
         setResList(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilteredResList(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
 
+        // console.log(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        
     }
 
     useEffect(() => {
         fetchData()
     }, [])
+
+    console.log(resList.length);
+    
+
+
+    if (onlineStatus === false) {
+        return <h1>You are currently offline, please check your internet connection!</h1>
+    }
 
     return resList.length === 0 ? <Shimmer /> : (<>
         <div className="filter-cont">

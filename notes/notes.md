@@ -828,6 +828,19 @@ By using this approach, we can effectively manage asynchronous operations with u
 
 ---
 
+## Episode -09 | Optimizing our App
+
+### Q1: What is Single Responsibility Principle?
+
+**A:** It becomes more reusable, maintainable, testable
+
+### Q2: What is a custom hook?
+
+**A:** It becomes more reusable, maintainable, testable
+
+### Q3: What is Chunking?
+
+**A:** Chunking, Code Splitting, Dynamic Bundling, Lazy Loading, On demand loading, Dynamic Inport
 
 <!-- Pending -->
 on scroll more restaurants, 
