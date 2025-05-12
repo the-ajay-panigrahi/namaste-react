@@ -95,8 +95,7 @@ They work together to handle safe loading of files from other websites.
 
 ### Q4: Is React a library? What’s the difference between a library and a framework?
 
-**A:**  
-Yes, **React is a JavaScript library**, not a framework.
+**A:** Yes, **React is a JavaScript library**, not a framework.
 
 It is mainly used to **build user interfaces (UI)**, especially for **single-page applications**.  
 React only handles the **view layer** of your app — how things look and interact.
@@ -125,9 +124,7 @@ Frameworks give you a **ready-made structure**, but with **less freedom**.
 
 ### Q5: What are the advantages of React?
 
-**A:**
-
-React has many benefits that make it popular for building user interfaces:
+**A:** React has many benefits that make it popular for building user interfaces:
 
 1. **Component-Based**  
    You can break your UI into small reusable pieces called components.
@@ -632,7 +629,7 @@ This will render the appropriate UI based on the current route.
    - The server responds with a fresh HTML page for each route.
    - This is the traditional approach used in multi-page applications (MPAs).
 
-## Episode-08 | Let's Get Classy
+## Episode - 08 | Let's Get Classy
 
 ### Q1: What is the use of super keyword in js?
 
@@ -828,20 +825,82 @@ By using this approach, we can effectively manage asynchronous operations with u
 
 ---
 
-## Episode -09 | Optimizing our App
+## Episode - 09 | Optimizing our App
 
 ### Q1: What is Single Responsibility Principle?
 
-**A:** It becomes more reusable, maintainable, testable
+**A:** A component or function should do only one job. This makes it reusable, maintainable, and testable.
 
 ### Q2: What is a custom hook?
 
-**A:** It becomes more reusable, maintainable, testable
+**A:** A reusable function in React that uses built-in hooks to share logic across components.
 
 ### Q3: What is Chunking?
 
-**A:** Chunking, Code Splitting, Dynamic Bundling, Lazy Loading, On demand loading, Dynamic Inport
+**A:** Breaking code into smaller parts (chunks) to load only when needed. Improves performance with lazy loading.  
+Also known as: Chunking, Code Splitting, Dynamic Bundling, Lazy Loading, On-demand Loading, Dynamic Import.
 
-<!-- Pending -->
-on scroll more restaurants, 
-give vegonly option in restaurant menu
+
+## Episode - 11 | Data is the New Oil
+
+### Q1: What is Higher Order Components?
+
+**A:** A Higher Order Component (HOC) is a function that takes a component and returns a new enhanced component without modifying the original one. It adds extra behavior or data.
+
+### Q2: Controlled and Uncontrolled Components
+
+**A:** Controlled components are managed by React state via the parent.  
+Uncontrolled components manage their own state internally (e.g., using refs).
+
+### Q3: What is lifting the state up ?
+
+**A:** Lifting state up  in React refers to the practice of  moving the state
+from a lower-level (child) component to a higher-level (parent or common
+ancestor) component in the component tree . This is done to share and
+manage state across multiple components.
+
+When a child component needs access to certain data or needs to modify the
+data, instead of keeping that data and the corresponding state management solely
+within the child component, we move the state to a shared ancestor component.
+By doing so, the parent component becomes the source of truth for the state, and
+it can pass down the necessary data and functions as props to its child
+components
+
+### Q4: What is prop drilling ?
+
+**A:** In React,  prop drilling  refers to the process of  passing down props
+(short for properties) through multiple layers of nested components. 
+
+This happens when a piece of data needs to be transferred from a higher-level component to a deeply nested child
+component, and it must pass through several intermediary
+components in between.
+
+### Q5: What is Context API ?
+
+**A:** Context API allows you to share data (like theme, user info) globally across components without passing props manually at every level.
+
+### Q6: Why do we need state management libraries like Redux and RTK when we have Context?
+
+**A:** Context is good for small, static data. Redux/RTK handle complex state, logic, and updates efficiently with tools like middleware, devtools, and async support.
+
+### Q7: What are Context Provider and Context Consumer ?
+**A:**   In React, the  Context API  provides a  way to pass data through the
+component tree without having to pass props manually at every level .
+The two main components associated with the  Context API are
+the Context Provider and Context Consumer .
+
+Context Provider : The Context Provider is a  component that allows
+its children to subscribe to a context's changes . It accepts a value
+prop, which is the data that will be shared with the components
+that are descendants of this provider. The Provider component
+is created using  React.createContext()  and then rendered as part
+of the component tree. It establishes the context and provides
+the data to its descendants. 
+
+Context Consumer : The Context Consumer is a component that subscribes to the
+changes in the context provided by its nearest Context Provider ancestor. It allows
+components to access the context data without the need for prop drilling. The
+Consumer component is used within the JSX of a component to consume the
+context data. It takes a function as its child, and that function receives the current
+context value as an argument.
+
