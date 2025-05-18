@@ -1,6 +1,9 @@
+import { useContext } from "react"
 import { imgLink } from "../utils/constants"
+import { inputContext } from "../utils/inputContext"
 
 const RestaurantCard = ({ resData }) => {
+    const myName = useContext(inputContext)
 
     const { info } = resData
     const { name, cloudinaryImageId, avgRating, costForTwo, cuisines, locality } = info
@@ -16,6 +19,7 @@ const RestaurantCard = ({ resData }) => {
                     <div className="avg-cost"><span>{avgRating}</span><span>{costForTwo}</span></div>
                     <div className="cuisines">{cuisines.join(", ")}</div>
                     <div className="locality">{locality}</div>
+                    <div>{myName.name}</div>
                 </div>
             </div>
 

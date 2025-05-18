@@ -700,25 +700,27 @@ hawk.fly();
 **A:** Class based components uses classes, this class extends React.Component. It has a render method that returns jsx. To access the props passed, we will use constructor here, note dont forget to use super keyword before using this
 
 ```javascript
-import React from "react"
+import React from "react";
 
 class UserClass extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-    render() {
-        const { name, location, contactInfo } = this.props
-        return <div>
-            <h2>Name : {name}</h2>
-            <h3>Location : {location}</h3>
-            <h4>Contact : {contactInfo}</h4>
-        </div>
-    }
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    const { name, location, contactInfo } = this.props;
+    return (
+      <div>
+        <h2>Name : {name}</h2>
+        <h3>Location : {location}</h3>
+        <h4>Contact : {contactInfo}</h4>
+      </div>
+    );
+  }
 }
 
-export default UserClass
-
+export default UserClass;
 ```
+
 ### Q3: What is the lifecycle of a class-based component in React?
 
 **A:** In React class-based components, the lifecycle during the **mounting phase** includes:
@@ -732,6 +734,7 @@ React processes this in **two main phases**:
 ---
 
 #### 🔹 Render Phase
+
 - Executes: `constructor()` → `render()`
 - React performs **diffing**, **reconciliation**, and **batches virtual DOM**
 - **No real DOM updates** happen here
@@ -739,6 +742,7 @@ React processes this in **two main phases**:
 ---
 
 #### 🔸 Commit Phase
+
 - React updates the **actual DOM**
 - Executes: `componentDidMount()`
 - DOM mutations and side effects happen here
@@ -785,9 +789,8 @@ export default ExampleComponent;
 
 For more reference [React-Lifecycle-methods](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
-
-
 ### Q5: Why can't we have the `callback function` of `useEffect async`?
+
 A: In React, the `useEffect` hook is designed to handle side effects in functional components. It's a powerful and flexible tool for managing asynchronous operations, such as data fetching, API calls, and more. However, useEffect itself cannot directly accept an async callback function. This is because useEffect expects its callback function to return either nothing (i.e., undefined) or a cleanup function, and it doesn't work well with Promises returned from async functions. There are a few reasons for this:
 
 `Return Value Expectation` - The primary purpose of the useEffect callback function is to handle side effects and perform cleanup. React expects us to either return nothing (i.e., undefined) from the callback or return a cleanup function. An async function returns a Promise, and it doesn't fit well with this expected behavior.
@@ -797,26 +800,31 @@ A: In React, the `useEffect` hook is designed to handle side effects in function
 To work with async operations within a useEffect, we can use the following pattern:
 
 ```javascript
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      // Perform asynchronous operations
-      const result = await someAsyncOperation();
-      // Update the state with the result
-      setState(result);
-    } catch (error) {
-      // Handle errors
-      console.error(error);
-    }
-  };
+useEffect(
+  () => {
+    const fetchData = async () => {
+      try {
+        // Perform asynchronous operations
+        const result = await someAsyncOperation();
+        // Update the state with the result
+        setState(result);
+      } catch (error) {
+        // Handle errors
+        console.error(error);
+      }
+    };
 
-  fetchData(); // Call the async function
+    fetchData(); // Call the async function
 
-  return () => {
-    // Cleanup code, if necessary
-    // This function will be called when the component unmounts or when dependencies change
-  };
-}, [/* dependency array */]);
+    return () => {
+      // Cleanup code, if necessary
+      // This function will be called when the component unmounts or when dependencies change
+    };
+  },
+  [
+    /* dependency array */
+  ]
+);
 ```
 
 In this pattern, we define an async function within the useEffect callback, perform our asynchronous operations, and then call that function. Additionally, we return a cleanup function from the useEffect to handle any necessary cleanup tasks when the component unmounts or when specified dependencies change.
@@ -840,7 +848,6 @@ By using this approach, we can effectively manage asynchronous operations with u
 **A:** Breaking code into smaller parts (chunks) to load only when needed. Improves performance with lazy loading.  
 Also known as: Chunking, Code Splitting, Dynamic Bundling, Lazy Loading, On-demand Loading, Dynamic Import.
 
-
 ## Episode - 11 | Data is the New Oil
 
 ### Q1: What is Higher Order Components?
@@ -854,7 +861,7 @@ Uncontrolled components manage their own state internally (e.g., using refs).
 
 ### Q3: What is lifting the state up ?
 
-**A:** Lifting state up  in React refers to the practice of  moving the state
+**A:** Lifting state up in React refers to the practice of moving the state
 from a lower-level (child) component to a higher-level (parent or common
 ancestor) component in the component tree . This is done to share and
 manage state across multiple components.
@@ -868,8 +875,8 @@ components
 
 ### Q4: What is prop drilling ?
 
-**A:** In React,  prop drilling  refers to the process of  passing down props
-(short for properties) through multiple layers of nested components. 
+**A:** In React, prop drilling refers to the process of passing down props
+(short for properties) through multiple layers of nested components.
 
 This happens when a piece of data needs to be transferred from a higher-level component to a deeply nested child
 component, and it must pass through several intermediary
@@ -884,18 +891,19 @@ components in between.
 **A:** Context is good for small, static data. Redux/RTK handle complex state, logic, and updates efficiently with tools like middleware, devtools, and async support.
 
 ### Q7: What are Context Provider and Context Consumer ?
-**A:**   In React, the  Context API  provides a  way to pass data through the
+
+**A:** In React, the Context API provides a way to pass data through the
 component tree without having to pass props manually at every level .
-The two main components associated with the  Context API are
+The two main components associated with the Context API are
 the Context Provider and Context Consumer .
 
-Context Provider : The Context Provider is a  component that allows
+Context Provider : The Context Provider is a component that allows
 its children to subscribe to a context's changes . It accepts a value
 prop, which is the data that will be shared with the components
 that are descendants of this provider. The Provider component
-is created using  React.createContext()  and then rendered as part
+is created using React.createContext() and then rendered as part
 of the component tree. It establishes the context and provides
-the data to its descendants. 
+the data to its descendants.
 
 Context Consumer : The Context Consumer is a component that subscribes to the
 changes in the context provided by its nearest Context Provider ancestor. It allows
@@ -904,3 +912,168 @@ Consumer component is used within the JSX of a component to consume the
 context data. It takes a function as its child, and that function receives the current
 context value as an argument.
 
+## Episode-12 | Let's Build Our Store
+
+### Q1: What is Redux, React Redux, Redux Toolkit, Zustand and Context API? What are their differences?
+
+**A:**
+
+- **Redux**  
+  A state management library for JavaScript apps. It stores app state in a single object (store). You must manually write actions and reducers.
+
+- **React Redux**  
+  Official React bindings for Redux. It helps React components connect to the Redux store easily.
+
+- **Redux Toolkit (RTK)**  
+  A simpler and modern way to use Redux. It reduces boilerplate by auto-generating actions and reducers.
+
+- **Zustand**  
+  A small and fast state management library. Easier than Redux. No need to write actions or reducers. Works well with React.
+
+- **Context API**  
+  Built-in React feature. Shares state globally without external libraries. Best for small or medium apps.
+
+---
+
+### 🆚 Differences (Simple Table)
+
+| Feature       | Redux      | React Redux | Redux Toolkit     | Zustand   | Context API        |
+| ------------- | ---------- | ----------- | ----------------- | --------- | ------------------ |
+| Type          | Library    | Binding     | Toolkit for Redux | Library   | Built-in React API |
+| Boilerplate   | High       | Medium      | Low               | Very Low  | Low                |
+| Complexity    | Complex    | Medium      | Easy              | Very Easy | Easy               |
+| Size          | Large      | Medium      | Medium            | Small     | Small              |
+| Best Use Case | Large apps | Large apps  | Large/Medium apps | Any app   | Small/Medium apps  |
+
+### Q2: Why do we use Redux Toolkit (RTK) over Redux?
+
+**A:**
+
+- **Less Code** – RTK reduces boilerplate (less manual actions and reducers).
+- **Simpler Setup** – Comes with `configureStore`, no need for custom setup.
+- **Built-in Tools** – Includes `createSlice`, `createAsyncThunk`, dev tools, etc.
+- **Better Defaults** – RTK uses good practices by default (like Immer for immutability).
+- **Improved Dev Experience** – Easier debugging and async handling.
+
+👉 **In short:** RTK is the modern, faster, and cleaner way to write Redux code.
+
+### Q3: What is Redux Store?
+
+**A:** Redux store is a **big JavaScript object** that holds the **entire state** of your app in **one central place**.
+
+- It is **read-only** (can’t change directly).
+- Can only be updated by **dispatching actions**.
+- Acts like a **single source of truth** for your app’s data.
+
+👉 **In short:** Redux store is a global container that manages your app's data.
+
+### Q4: What are Slices in Redux/RTK?
+
+**A:** Slices are **small parts of the Redux store** that manage a specific piece of state.
+
+- Created using `createSlice()` in RTK.
+- Each slice contains:
+  - **State** (a portion of the store)
+  - **Reducers** (functions to update state)
+  - **Actions** (auto-generated)
+
+👉 **In short:** A slice is like a mini-store for one feature (e.g., userSlice, cartSlice).
+
+### Q5: You cannot directly add data in Redux store
+
+**A:** Correct – you **cannot directly change** the Redux store.
+
+To **modify (write)** data in Redux:
+
+1. **Dispatch an Action** →
+2. **Reducer Function** runs →
+3. **Updates the store's slice**
+
+To **read (get)** data from Redux:
+
+- Use a **Selector**
+- Selector reads the data and **updates React component automatically** (this is called **subscribing to the store**)
+
+👉 **In short:** You dispatch actions to update, use selectors to read, and React stays in sync with the store.
+
+![Redux Tool Kit](rtk.png)
+
+### Q6: What is a selector in RTK?
+
+**A:** A selector in Redux Toolkit (RTK) is a function that retrieves specific data from the Redux store state. It helps keep components clean and efficient.
+
+You can use the selector function with the `useSelector` hook in React components to access the desired part of the state.
+
+**Example:**
+
+```js
+const selectUser = (state) => state.user;
+const user = useSelector(selectUser);
+```
+
+### Q7: What is the useDispatch Hook?
+
+**A:** The `useDispatch` hook is used in React with Redux Toolkit to send actions to the Redux store. It returns the `dispatch` function, which you can use to trigger state updates.
+
+**Example:**
+
+```js
+const dispatch = useDispatch();
+dispatch(increment());
+```
+
+### Q8: Never subscribe to the whole store or useless part of it?
+
+**A:** Yes, subscribing to the whole store or unrelated parts of it can cause **unnecessary re-renders**, leading to **performance issues**. Always use selectors to subscribe only to the specific slice of state your component needs.
+
+**Example (Bad):**
+
+```js
+const state = useSelector((state) => state); // Avoid this
+```
+
+**Example (Good):**
+
+```js
+const user = useSelector((state) => state.user); // Efficient
+```
+
+### Q9: RTK uses Immer behind the scenes
+
+**A:** Yes, Redux Toolkit (RTK) uses **Immer** under the hood, which allows you to write **mutating logic** in reducers, but it actually keeps the state **immutable**.
+
+**Example:**
+```js
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: { value: 0 },
+  reducers: {
+    increment: (state) => {
+      state.value += 1; // Looks like mutation, but Immer handles it immutably
+    },
+  },
+});
+```
+
+### Q10: What is RTK Query?
+
+**A:** RTK Query is a powerful data fetching and caching tool built into Redux Toolkit. It helps manage API calls, loading states, caching, and more — all with less code.
+
+Earlier, we used middlewares like `redux-thunk` to handle API calls manually. Now, **RTK Query simplifies this process** by providing built-in support for fetching, caching, and syncing server data with the Redux store.
+
+**Benefits:**
+- Automatic caching and re-fetching
+- Less boilerplate code
+- Built-in loading and error states
+
+**Example:**
+```js
+const api = createApi({
+  baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
+  endpoints: (builder) => ({
+    getUsers: builder.query({
+      query: () => 'users',
+    }),
+  }),
+});
+```

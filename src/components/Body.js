@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestaurantCard, { promotedRestaurant } from "./RestaurantCard"
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { inputContext } from "../utils/inputContext.js";
 
 
 const Body = () => {
@@ -15,6 +16,7 @@ const Body = () => {
 
     const RestaurantPromoted = promotedRestaurant(RestaurantCard)
 
+    const myName = useContext(inputContext)
 
     const fetchData = async () => {
         const data = await fetch("https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.77985670251919&lng=83.36289939773746&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
@@ -62,6 +64,8 @@ const Body = () => {
                 const filteredResList = resList.filter((resList) => resList?.info?.avgRating >= 4.3)
                 setResList(filteredResList)
             }}>Filter: Top Rated Restaurant</button>
+
+            <input type="text" className="" style={{ marginLeft: "10px", }} value={myName.name} onChange={(event) => { myName.setName(event.target.value)}} />
         </div>
 
         <div className="res-container">

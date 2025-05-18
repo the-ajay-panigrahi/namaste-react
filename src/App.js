@@ -9,16 +9,18 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Services from "./components/Services";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { InputProvider } from "./utils/inputContext.js";
 
 const About = lazy(() => { return import("./components/About") })
 
 const AppLayout = () => {
     return (
-        <>
+
+        <InputProvider>
             <Header />
             <Outlet />
             <Footer />
-        </>
+        </InputProvider>
     )
 }
 
